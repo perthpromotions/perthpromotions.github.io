@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Perth Promotions — Local Social Media Advertising</title>
+<link rel="icon" type="image/svg+xml" href="favicon-pp.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #e8b84b;
+    --gold-dim: #c99c35;
+    --gold-light: #f5d07a;
+    --gold-glow: rgba(232,184,75,0.15);
+    --bg: #faf8f4;
+    --bg2: #f2ede4;
+    --dark: #1a1508;
+    --dark2: #2d2410;
+    --text: #2d2410;
+    --muted: #7a6e58;
+    --border: rgba(26,21,8,0.1);
+    --white: #fff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px; height: 72px;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--dark); text-decoration: none; letter-spacing: 0.02em;
+  }
+  .nav-logo svg { width: 32px; height: 32px; }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
+    color: var(--muted); text-decoration: none; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-dim); }
+  .nav-cta {
+    background: var(--dark); color: var(--gold);
+    padding: 10px 24px; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    border: none; cursor: pointer; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--dark2); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 56px 80px;
+    gap: 60px; position: relative; overflow: hidden;
+  }
+  .hero-bg-shape {
+    position: absolute; right: -120px; top: -80px;
+    width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-dots {
+    position: absolute; left: 0; bottom: 0;
+    width: 300px; height: 300px; opacity: 0.08;
+    background-image: radial-gradient(circle, var(--dark) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+  }
+  .hero-left { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-dim); margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
+  }
+  .eyebrow-line { width: 32px; height: 1px; background: var(--gold); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 5.5vw, 80px);
+    font-weight: 900; line-height: 1.05;
+    color: var(--dark);
+    opacity: 0; animation: fadeUp 0.7s 0.25s forwards;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-dim); }
+  .hero-sub {
+    font-size: 17px; font-weight: 300;
+    color: var(--muted); margin-top: 28px; margin-bottom: 44px;
+    max-width: 480px; line-height: 1.8;
+    opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
+  }
+  .hero-actions {
+    display: flex; gap: 16px; align-items: center;
+    opacity: 0; animation: fadeUp 0.7s 0.55s forwards;
+  }
+  .btn-dark {
+    background: var(--dark); color: var(--gold);
+    padding: 16px 36px; font-size: 14px; font-weight: 600;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-dark:hover { background: var(--dark2); transform: translateY(-2px); }
+  .btn-ghost {
+    color: var(--dark); padding: 15px 28px;
+    font-size: 14px; font-weight: 500;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--border); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: border-color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-dim); }
+
+  /* hero visual */
+  .hero-right {
+    position: relative; z-index: 1;
+    opacity: 0; animation: fadeLeft 0.8s 0.5s forwards;
+  }
+  .hero-card-stack { position: relative; padding: 24px; }
+  .hero-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(26,21,8,0.08);
+    padding: 28px 28px;
+    position: relative;
+  }
+  .hero-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 4px 4px 0 0;
+  }
+  .card-platform {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .platform-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .card-post-preview {
+    background: var(--bg2); border-radius: 4px;
+    padding: 16px; margin-bottom: 16px;
+    font-size: 14px; color: var(--text); line-height: 1.6;
+  }
+  .card-post-preview strong { color: var(--gold-dim); }
+  .card-stats {
+    display: flex; gap: 24px;
+  }
+  .cstat { text-align: center; }
+  .cstat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700; color: var(--dark);
+  }
+  .cstat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .hero-card-bg {
+    position: absolute; top: 12px; left: -12px;
+    width: 100%; height: 100%;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 4px; z-index: -1;
+  }
+  .hero-badge {
+    position: absolute; bottom: -16px; right: 16px;
+    background: var(--gold); padding: 12px 20px;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 4px 16px rgba(232,184,75,0.3);
+  }
+  .badge-stars { color: var(--dark); font-size: 14px; }
+  .badge-text { font-size: 12px; font-weight: 600; color: var(--dark); line-height: 1.3; }
+
+  /* ── STRIP ── */
+  .strip {
+    background: var(--dark); padding: 20px 0;
+    overflow: hidden;
+  }
+  .strip-track {
+    display: flex; gap: 0;
+    animation: ticker 30s linear infinite;
+    white-space: nowrap;
+  }
+  .strip-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); padding: 0 28px;
+  }
+  .strip-item.gold { color: var(--gold); }
+
+  /* ── SECTION ── */
+  section { padding: 112px 56px; }
+  .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold-dim); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .label::after { content: ''; flex: 0 0 24px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 900; line-height: 1.1;
+    color: var(--dark); margin-bottom: 20px;
+  }
+  .section-sub { font-size: 17px; font-weight: 300; color: var(--muted); max-width: 520px; line-height: 1.8; }
+
+  /* ── SERVICES ── */
+  .services { background: var(--dark); }
+  .services .label { color: var(--gold); }
+  .services .label::after { background: var(--gold-dim); }
+  .services .section-title { color: var(--white); }
+  .services .section-sub { color: rgba(255,255,255,0.5); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; margin-top: 64px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .service-card {
+    background: var(--dark);
+    padding: 44px 36px;
+    transition: background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .service-card:hover { background: #221c08; }
+  .service-card:hover::after { transform: scaleX(1); }
+  .svc-icon {
+    width: 48px; height: 48px; border-radius: 50%;
+    border: 1px solid rgba(232,184,75,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 20px;
+    background: rgba(232,184,75,0.06);
+  }
+  .svc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700; color: var(--white);
+    margin-bottom: 12px;
+  }
+  .svc-desc { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+  /* ── HOW ── */
+  .how { background: var(--bg2); }
+  .how-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 40px; margin-top: 64px;
+  }
+  .how-step { position: relative; }
+  .how-step:not(:last-child)::after {
+    content: '→';
+    position: absolute; right: -24px; top: 18px;
+    font-size: 20px; color: var(--gold);
+  }
+  .step-n {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px; font-weight: 900;
+    color: var(--gold); line-height: 1;
+    opacity: 0.35; margin-bottom: 4px;
+  }
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--dark); margin-bottom: 10px;
+  }
+  .step-desc { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+
+  /* ── RESULTS ── */
+  .results-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center; margin-top: 64px;
+  }
+  .result-cards { display: flex; flex-direction: column; gap: 20px; }
+  .rcard {
+    background: var(--white); border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    padding: 28px; transition: box-shadow 0.3s;
+  }
+  .rcard:hover { box-shadow: 0 8px 24px rgba(26,21,8,0.08); }
+  .rcard-stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 10px; }
+  .rcard-text { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.7; font-style: italic; margin-bottom: 14px; }
+  .rcard-author { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark); }
+  .results-numbers { display: flex; flex-direction: column; gap: 44px; }
+  .rnum-row { display: flex; align-items: baseline; gap: 16px; padding-bottom: 44px; border-bottom: 1px solid var(--border); }
+  .rnum-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .rnum-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px; line-height: 1; font-weight: 900;
+    color: var(--gold-dim);
+  }
+  .rnum-info h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 4px;
+  }
+  .rnum-info p { font-size: 13px; color: var(--muted); }
+
+  /* ── ABOUT ── */
+  .about { background: var(--bg2); }
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center; margin-top: 64px;
+  }
+  .about-content p { font-size: 16px; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+  .about-features { display: flex; flex-direction: column; gap: 16px; margin-top: 36px; }
+  .feat-row { display: flex; align-items: flex-start; gap: 14px; }
+  .feat-icon { color: var(--gold); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .feat-text h5 { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 2px; }
+  .feat-text p { font-size: 13px; color: var(--muted); }
+  .about-visual {
+    background: var(--dark); padding: 48px;
+    position: relative; overflow: hidden;
+  }
+  .av-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px; line-height: 1.05; font-weight: 900;
+    color: var(--white); margin-bottom: 24px;
+  }
+  .av-quote em { font-style: italic; color: var(--gold); }
+  .av-sub { font-size: 14px; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; }
+  .av-bg {
+    position: absolute; bottom: -40px; right: -40px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--dark);
+    padding: 100px 56px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: 'PP';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 30vw; font-weight: 900; line-height: 1;
+    color: rgba(255,255,255,0.02); pointer-events: none;
+    white-space: nowrap;
+  }
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 64px); font-weight: 900;
+    color: var(--white); margin-bottom: 20px; position: relative;
+  }
+  .cta-section h2 em { font-style: italic; color: var(--gold); }
+  .cta-section p { font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.5); margin-bottom: 44px; position: relative; }
+  .btn-gold {
+    background: var(--gold); color: var(--dark);
+    padding: 18px 48px; font-size: 14px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border: none; cursor: pointer; text-decoration: none;
+    display: inline-block; position: relative;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(232,184,75,0.25); }
+  .cta-contact {
+    display: flex; justify-content: center; gap: 40px;
+    margin-top: 40px; position: relative;
+  }
+  .cta-item { text-align: center; }
+  .cta-item-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 6px; }
+  .cta-item-val { font-family: 'Space Mono', monospace; font-size: 15px; color: var(--gold); letter-spacing: 0.05em; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #110e03; padding: 56px 56px 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 700; color: var(--white);
+  }
+  .footer-brand span { color: var(--gold); }
+  .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .footer-cols { display: flex; gap: 56px; }
+  .fcol h5 { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+  .fcol a { display: block; font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+  .fcol a:hover { color: var(--gold); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .footer-stars { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .footer-stars span { color: var(--gold); }
+
+  /* ── ANIM ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
+    .hero-right { display: none; }
+    section { padding: 80px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .how-steps { grid-template-columns: 1fr 1fr; }
+    .how-step::after { display: none; }
+    .results-inner, .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .footer-top { flex-direction: column; gap: 32px; }
+    .footer-cols { flex-wrap: wrap; gap: 28px; }
+    .cta-section { padding: 80px 24px; }
+    .cta-contact { flex-direction: column; gap: 20px; }
+    footer { padding: 56px 24px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="32" rx="6" fill="#1a1508"/>
+      <circle cx="16" cy="16" r="10" stroke="#e8b84b" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <circle cx="16" cy="16" r="4" fill="#e8b84b"/>
+      <path d="M16 6V4M16 28V26M6 16H4M28 16H26" stroke="#e8b84b" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+    </svg>
+    Perth Promotions
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#how">How It Works</a>
+    <a href="#results">Results</a>
+    <a href="#about">About</a>
+  </div>
+  <a href="tel:0466094672" class="nav-cta">Get Started</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span class="eyebrow-line"></span>Perth Local Advertising</div>
+    <h1>Put Your Business<br>In Front of <em>Perth.</em></h1>
+    <p class="hero-sub">Perth Promotions gets your brand seen across local Perth social media groups — fast, easy, and effective. More eyes on your business, more customers through the door.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-dark">Start Promoting</a>
+      <a href="#how" class="btn-ghost">How it works →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card-stack">
+      <div class="hero-card-bg"></div>
+      <div class="hero-card">
+        <div class="card-platform"><span class="platform-dot"></span>Perth Local Groups — Post Live</div>
+        <div class="card-post-preview">
+          <strong>📍 Perth Promotions</strong> — helping <strong>local Perth businesses</strong> reach thousands of potential customers through the community groups they already follow every day.
+        </div>
+        <div class="card-stats">
+          <div class="cstat"><div class="cstat-num">5.0★</div><div class="cstat-label">Rating</div></div>
+          <div class="cstat"><div class="cstat-num">Local</div><div class="cstat-label">Targeted</div></div>
+          <div class="cstat"><div class="cstat-num">Fast</div><div class="cstat-label">Setup</div></div>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="badge-stars">★★★★★</div>
+        <div class="badge-text">5.0 on Google<br>2 Reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-track">
+    <span class="strip-item gold">Perth Promotions</span>
+    <span class="strip-item">◆</span>
+    <span class="strip-item">Local Social Media</span>
+    <span class="strip-item">◆</span>
+    <span class="strip-item">Perth Business Visibility</span>
+    <span class="strip-item">◆</span>
+    <span class="strip-item gold">Community Reach</span>
+    <span class="strip-item">◆</span>
+    <span class="strip-item">Small Business Specialists</span>
+    <span class="strip-item">◆</span>
+    <span class="strip-item">Wellington St Perth</span>
+    <span class="strip-item">◆</span>
+    <!-- repeat -->
+    <span class="strip-item gold">Perth Promotions</span>
+    <span class="strip-item">◆</span>
+    <span class="strip-item">Local Social Media</span>
+    <span class="strip-item">◆</span>
+    <span class="strip-item">Perth Business Visibility</span>
+    <span class="strip-item">◆</span>
+    <span class="strip-item gold">Community Reach</span>
+    <span class="strip-item">◆</span>
+    <span class="strip-item">Small Business Specialists</span>
+    <span class="strip-item">◆</span>
+    <span class="strip-item">Wellington St Perth</span>
+    <span class="strip-item">◆</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="label">What We Offer</div>
+  <h2 class="section-title">Local Reach.<br>Real Results.</h2>
+  <p class="section-sub">We connect Perth businesses with their local community through targeted social media promotion — simple, effective, and built for small business.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="svc-icon">📱</div>
+      <div class="svc-title">Social Group Posting</div>
+      <p class="svc-desc">Your business promoted across active Perth local Facebook and social media groups where your target customers are already engaged every day.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🎯</div>
+      <div class="svc-title">B2B Visibility</div>
+      <p class="svc-desc">Get your brand in front of other local Perth businesses. Perfect for services, suppliers, and anyone wanting to grow their professional network in the city.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">📣</div>
+      <div class="svc-title">Brand Promotion</div>
+      <p class="svc-desc">Build recognition and awareness in your suburb and across Perth through consistent, community-first promotion that feels authentic and local.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">✍️</div>
+      <div class="svc-title">Post Creation</div>
+      <p class="svc-desc">We craft compelling, shareable posts tailored to your business — copy that resonates with the Perth community and drives real engagement.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🔄</div>
+      <div class="svc-title">Regular Campaigns</div>
+      <p class="svc-desc">Consistent promotion over time builds brand familiarity. We keep your business top of mind through ongoing social media campaigns across Perth groups.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">📊</div>
+      <div class="svc-title">Simple Reporting</div>
+      <p class="svc-desc">No confusing dashboards. Just clear, plain-English updates on where your promotions went and what kind of attention they received.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how" id="how">
+  <div class="label">The Process</div>
+  <h2 class="section-title">Easy to Work With.<br>Fast to Launch.</h2>
+  <p class="section-sub">Getting your business promoted across Perth social media has never been simpler.</p>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="step-n">01</div>
+      <div class="step-title">Tell Us About Your Biz</div>
+      <p class="step-desc">Quick chat about your business, your audience, and what you want to promote. No jargon, no long forms.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-n">02</div>
+      <div class="step-title">We Craft Your Post</div>
+      <p class="step-desc">We write engaging content tailored to your business and the Perth audience that will see it.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-n">03</div>
+      <div class="step-title">We Promote Across Perth</div>
+      <p class="step-desc">Your post is pushed out to local Perth social media groups where your ideal customers are already active.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-n">04</div>
+      <div class="step-title">You Get More Visibility</div>
+      <p class="step-desc">Watch your brand recognition grow. More people in Perth know who you are and what you offer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="label">What Clients Say</div>
+  <h2 class="section-title">Trusted by Perth<br>Businesses.</h2>
+  <div class="results-inner">
+    <div class="result-cards">
+      <div class="rcard">
+        <div class="rcard-stars">★★★★★</div>
+        <p class="rcard-text">"A fantastic avenue for increasing visibility and recognition among other businesses. Their dedication to helping small businesses succeed is truly commendable — an invaluable platform."</p>
+        <div class="rcard-author">Kively Office Assistants Online — Perth</div>
+      </div>
+      <div class="rcard">
+        <div class="rcard-stars">★★★★★</div>
+        <p class="rcard-text">"Excellent extra business marketing tool for pushing out posts to local social media groups. Very easy to work with."</p>
+        <div class="rcard-author">Patti Stanley — Perth Business Owner</div>
+      </div>
+    </div>
+    <div class="results-numbers">
+      <div class="rnum-row">
+        <div class="rnum-big">5.0</div>
+        <div class="rnum-info">
+          <h4>Perfect Rating</h4>
+          <p>5-star average across all Google reviews</p>
+        </div>
+      </div>
+      <div class="rnum-row">
+        <div class="rnum-big">Perth</div>
+        <div class="rnum-info">
+          <h4>Community-First</h4>
+          <p>Promotions reach real, local Perth audiences in groups they actually use</p>
+        </div>
+      </div>
+      <div class="rnum-row">
+        <div class="rnum-big">Fast</div>
+        <div class="rnum-info">
+          <h4>Quick Turnaround</h4>
+          <p>Easy to set up, easy to work with — clients say so consistently</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="label">About Us</div>
+  <div class="about-inner">
+    <div class="about-content">
+      <h2 class="section-title">Perth's Local<br>Promotion Specialists</h2>
+      <p>Perth Promotions is based in the heart of Perth at Wellington Street, dedicated to helping local small businesses grow through community-driven social media promotion.</p>
+      <p>We know that Perth is a community. People buy local. They trust recommendations from their neighbours and their local groups. That's exactly where we put your business.</p>
+      <p>Whether you're a solo trader, a startup, or an established small business looking for more exposure — we're an easy, effective, and affordable way to get seen.</p>
+      <div class="about-features">
+        <div class="feat-row">
+          <div class="feat-icon">✦</div>
+          <div class="feat-text"><h5>Perth CBD Based</h5><p>123 Wellington St, The Rise — Wellington Place</p></div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-icon">✦</div>
+          <div class="feat-text"><h5>Small Business Focused</h5><p>Built for local Perth businesses, not big corporates</p></div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-icon">✦</div>
+          <div class="feat-text"><h5>Community Approach</h5><p>Authentic, local promotion that feels genuine — not spammy</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="av-bg"></div>
+      <div class="av-quote">Local<br>Business<br><em>Deserves</em><br>Local<br>Attention.</div>
+      <div class="av-sub">Perth Promotions — Est. Wellington St</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2>Ready to Get<br><em>Noticed</em> in Perth?</h2>
+  <p>Call us today and let's get your business in front of the Perth community.</p>
+  <a href="tel:0466094672" class="btn-gold">Call 0466 094 672</a>
+  <div class="cta-contact">
+    <div class="cta-item">
+      <div class="cta-item-label">Phone</div>
+      <div class="cta-item-val">0466 094 672</div>
+    </div>
+    <div class="cta-item">
+      <div class="cta-item-label">Location</div>
+      <div class="cta-item-val">123 Wellington St, Perth WA 6004</div>
+    </div>
+    <div class="cta-item">
+      <div class="cta-item-label">Rating</div>
+      <div class="cta-item-val">★★★★★ 5.0 Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Perth <span>Promotions</span></div>
+      <div class="footer-tagline">Local Social Media Advertising — Perth WA</div>
+    </div>
+    <div class="footer-cols">
+      <div class="fcol">
+        <h5>Services</h5>
+        <a href="#services">Social Group Posting</a>
+        <a href="#services">B2B Visibility</a>
+        <a href="#services">Brand Promotion</a>
+        <a href="#services">Post Creation</a>
+      </div>
+      <div class="fcol">
+        <h5>Company</h5>
+        <a href="#about">About Us</a>
+        <a href="#results">Reviews</a>
+        <a href="#how">How It Works</a>
+      </div>
+      <div class="fcol">
+        <h5>Contact</h5>
+        <a href="tel:0466094672">0466 094 672</a>
+        <a href="#">123 Wellington St</a>
+        <a href="#">Perth WA 6004</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Perth Promotions. All rights reserved.</div>
+    <div class="footer-stars"><span>★ 5.0</span> on Google Maps</div>
+  </div>
+</footer>
+
+</body>
+</html>
