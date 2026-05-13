@@ -4,31 +4,32 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Perth Promotions — Local Social Media Advertising</title>
-<link rel="icon" type="image/svg+xml" href="favicon-pp.svg"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a0a'/%3E%3Ccircle cx='16' cy='16' r='9' stroke='%23c0392b' stroke-width='1.5' stroke-dasharray='3 2'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23c0392b'/%3E%3C/svg%3E"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    --gold: #e8b84b;
-    --gold-dim: #c99c35;
-    --gold-light: #f5d07a;
-    --gold-glow: rgba(232,184,75,0.15);
-    --bg: #faf8f4;
-    --bg2: #f2ede4;
-    --dark: #1a1508;
-    --dark2: #2d2410;
-    --text: #2d2410;
-    --muted: #7a6e58;
-    --border: rgba(26,21,8,0.1);
-    --white: #fff;
+    --red: #c0392b;
+    --red-bright: #e63946;
+    --red-dim: #96281b;
+    --red-glow: rgba(192,57,43,0.15);
+    --black: #0a0a0a;
+    --black2: #141414;
+    --black3: #1e1e1e;
+    --off-white: #f5f3ef;
+    --white: #ffffff;
+    --grey: #888;
+    --grey-light: #bbb;
+    --border-dark: rgba(255,255,255,0.08);
+    --border-light: rgba(10,10,10,0.1);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Outfit', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
@@ -38,33 +39,33 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 56px; height: 72px;
-    background: rgba(250,248,244,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    padding: 0 56px; height: 70px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-dark);
   }
   .nav-logo {
-    display: flex; align-items: center; gap: 10px;
-    font-family: 'Playfair Display', serif;
-    font-size: 20px; font-weight: 700;
-    color: var(--dark); text-decoration: none; letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-weight: 700;
+    color: var(--white); text-decoration: none; letter-spacing: 0.04em;
   }
-  .nav-logo svg { width: 32px; height: 32px; }
+  .nav-logo-swan { width: 34px; height: 34px; }
   .nav-links { display: flex; gap: 36px; }
   .nav-links a {
-    font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
-    color: var(--muted); text-decoration: none; text-transform: uppercase;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    color: var(--grey); text-decoration: none; text-transform: uppercase;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--gold-dim); }
+  .nav-links a:hover { color: var(--white); }
   .nav-cta {
-    background: var(--dark); color: var(--gold);
-    padding: 10px 24px; font-size: 13px; font-weight: 600;
-    letter-spacing: 0.06em; text-transform: uppercase;
+    background: var(--red); color: var(--white);
+    padding: 10px 26px; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
     border: none; cursor: pointer; text-decoration: none;
     transition: background 0.2s;
   }
-  .nav-cta:hover { background: var(--dark2); }
+  .nav-cta:hover { background: var(--red-bright); }
 
   /* ── HERO ── */
   .hero {
@@ -74,169 +75,146 @@
     padding: 100px 56px 80px;
     gap: 60px; position: relative; overflow: hidden;
   }
-  .hero-bg-shape {
-    position: absolute; right: -120px; top: -80px;
-    width: 700px; height: 700px; border-radius: 50%;
-    background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
-    pointer-events: none;
+  .hero-bg-swan {
+    position: absolute; right: -60px; bottom: -80px;
+    width: 680px; height: 680px; opacity: 0.04;
+    pointer-events: none; z-index: 0;
   }
-  .hero-dots {
-    position: absolute; left: 0; bottom: 0;
-    width: 300px; height: 300px; opacity: 0.08;
-    background-image: radial-gradient(circle, var(--dark) 1px, transparent 1px);
-    background-size: 20px 20px;
-    pointer-events: none;
+  .hero-grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4; pointer-events: none;
   }
   .hero-left { position: relative; z-index: 1; }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--gold-dim); margin-bottom: 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 28px;
     opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
   }
-  .eyebrow-line { width: 32px; height: 1px; background: var(--gold); }
+  .eyebrow-line { width: 28px; height: 1px; background: var(--red); }
   .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(48px, 5.5vw, 80px);
-    font-weight: 900; line-height: 1.05;
-    color: var(--dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 5.5vw, 84px);
+    font-weight: 700; line-height: 1.0;
+    color: var(--white);
     opacity: 0; animation: fadeUp 0.7s 0.25s forwards;
   }
-  .hero h1 em { font-style: italic; color: var(--gold-dim); }
+  .hero h1 em { font-style: italic; color: var(--red); }
   .hero-sub {
-    font-size: 17px; font-weight: 300;
-    color: var(--muted); margin-top: 28px; margin-bottom: 44px;
-    max-width: 480px; line-height: 1.8;
+    font-size: 16px; font-weight: 300;
+    color: var(--grey); margin-top: 28px; margin-bottom: 44px;
+    max-width: 460px; line-height: 1.85;
     opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
   }
   .hero-actions {
     display: flex; gap: 16px; align-items: center;
     opacity: 0; animation: fadeUp 0.7s 0.55s forwards;
   }
-  .btn-dark {
-    background: var(--dark); color: var(--gold);
-    padding: 16px 36px; font-size: 14px; font-weight: 600;
-    letter-spacing: 0.07em; text-transform: uppercase;
+  .btn-red {
+    background: var(--red); color: var(--white);
+    padding: 16px 36px; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
     text-decoration: none; display: inline-block;
     transition: background 0.2s, transform 0.2s;
   }
-  .btn-dark:hover { background: var(--dark2); transform: translateY(-2px); }
+  .btn-red:hover { background: var(--red-bright); transform: translateY(-2px); }
   .btn-ghost {
-    color: var(--dark); padding: 15px 28px;
-    font-size: 14px; font-weight: 500;
+    color: var(--grey); padding: 15px 28px;
+    font-size: 13px; font-weight: 400;
     letter-spacing: 0.05em;
-    border: 1px solid var(--border); text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.15); text-decoration: none;
     display: inline-flex; align-items: center; gap: 8px;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, color 0.2s;
   }
-  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-dim); }
+  .btn-ghost:hover { border-color: var(--red); color: var(--white); }
 
-  /* hero visual */
+  /* hero right — swan card */
   .hero-right {
     position: relative; z-index: 1;
     opacity: 0; animation: fadeLeft 0.8s 0.5s forwards;
   }
-  .hero-card-stack { position: relative; padding: 24px; }
-  .hero-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    box-shadow: 0 8px 32px rgba(26,21,8,0.08);
-    padding: 28px 28px;
-    position: relative;
+  .swan-showcase {
+    border: 1px solid var(--border-dark);
+    background: var(--black2);
+    padding: 48px; position: relative; overflow: hidden;
   }
-  .hero-card::before {
+  .swan-showcase::before {
     content: ''; position: absolute;
-    top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    border-radius: 4px 4px 0 0;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--red-bright), transparent);
   }
-  .card-platform {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 16px;
-    display: flex; align-items: center; gap: 8px;
+  .showcase-swan { display: block; margin: 0 auto 32px; }
+  .showcase-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--grey); text-align: center; margin-bottom: 24px;
   }
-  .platform-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-  .card-post-preview {
-    background: var(--bg2); border-radius: 4px;
-    padding: 16px; margin-bottom: 16px;
-    font-size: 14px; color: var(--text); line-height: 1.6;
+  .showcase-stats {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark);
   }
-  .card-post-preview strong { color: var(--gold-dim); }
-  .card-stats {
-    display: flex; gap: 24px;
+  .sstat {
+    background: var(--black2); padding: 20px 16px; text-align: center;
   }
-  .cstat { text-align: center; }
-  .cstat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px; font-weight: 700; color: var(--dark);
+  .sstat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 700; color: var(--white); line-height: 1;
   }
-  .cstat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
-  .hero-card-bg {
-    position: absolute; top: 12px; left: -12px;
-    width: 100%; height: 100%;
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 4px; z-index: -1;
+  .sstat-label { font-size: 10px; color: var(--grey); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+  .showcase-badge {
+    position: absolute; bottom: 24px; right: 24px;
+    background: var(--red); padding: 8px 16px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--white);
   }
-  .hero-badge {
-    position: absolute; bottom: -16px; right: 16px;
-    background: var(--gold); padding: 12px 20px;
-    display: flex; align-items: center; gap: 10px;
-    box-shadow: 0 4px 16px rgba(232,184,75,0.3);
-  }
-  .badge-stars { color: var(--dark); font-size: 14px; }
-  .badge-text { font-size: 12px; font-weight: 600; color: var(--dark); line-height: 1.3; }
 
   /* ── STRIP ── */
   .strip {
-    background: var(--dark); padding: 20px 0;
+    background: var(--red); padding: 14px 0;
     overflow: hidden;
   }
   .strip-track {
     display: flex; gap: 0;
-    animation: ticker 30s linear infinite;
+    animation: ticker 28s linear infinite;
     white-space: nowrap;
   }
   .strip-item {
-    font-family: 'Space Mono', monospace;
-    font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase;
-    color: rgba(255,255,255,0.5); padding: 0 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.75); padding: 0 24px;
   }
-  .strip-item.gold { color: var(--gold); }
+  .strip-item.bold { color: var(--white); font-weight: 500; }
 
   /* ── SECTION ── */
   section { padding: 112px 56px; }
   .label {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--gold-dim); margin-bottom: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 16px;
     display: flex; align-items: center; gap: 10px;
   }
-  .label::after { content: ''; flex: 0 0 24px; height: 1px; background: var(--gold); }
+  .label::after { content: ''; flex: 0 0 24px; height: 1px; background: var(--red); }
   .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 4vw, 56px);
-    font-weight: 900; line-height: 1.1;
-    color: var(--dark); margin-bottom: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 4vw, 58px);
+    font-weight: 700; line-height: 1.05;
+    color: var(--white); margin-bottom: 20px;
   }
-  .section-sub { font-size: 17px; font-weight: 300; color: var(--muted); max-width: 520px; line-height: 1.8; }
+  .section-title em { font-style: italic; color: var(--red); }
+  .section-sub { font-size: 16px; font-weight: 300; color: var(--grey); max-width: 520px; line-height: 1.85; }
 
   /* ── SERVICES ── */
-  .services { background: var(--dark); }
-  .services .label { color: var(--gold); }
-  .services .label::after { background: var(--gold-dim); }
-  .services .section-title { color: var(--white); }
-  .services .section-sub { color: rgba(255,255,255,0.5); }
+  .services { background: var(--black2); }
   .services-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 1px; margin-top: 64px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--border-dark);
+    border: 1px solid var(--border-dark);
   }
   .service-card {
-    background: var(--dark);
+    background: var(--black2);
     padding: 44px 36px;
     transition: background 0.3s;
     position: relative; overflow: hidden;
@@ -244,170 +222,229 @@
   .service-card::after {
     content: ''; position: absolute;
     bottom: 0; left: 0; right: 0; height: 2px;
-    background: var(--gold);
+    background: var(--red);
     transform: scaleX(0); transform-origin: left;
     transition: transform 0.4s;
   }
-  .service-card:hover { background: #221c08; }
+  .service-card:hover { background: #1a0d0d; }
   .service-card:hover::after { transform: scaleX(1); }
   .svc-icon {
-    width: 48px; height: 48px; border-radius: 50%;
-    border: 1px solid rgba(232,184,75,0.3);
+    width: 44px; height: 44px;
+    border: 1px solid rgba(192,57,43,0.3);
     display: flex; align-items: center; justify-content: center;
-    font-size: 20px; margin-bottom: 20px;
-    background: rgba(232,184,75,0.06);
+    font-size: 18px; margin-bottom: 20px;
+    background: rgba(192,57,43,0.06);
   }
   .svc-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 22px; font-weight: 700; color: var(--white);
     margin-bottom: 12px;
   }
-  .svc-desc { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.7; }
+  .svc-desc { font-size: 14px; font-weight: 300; color: var(--grey); line-height: 1.75; }
 
   /* ── HOW ── */
-  .how { background: var(--bg2); }
+  .how { background: var(--black); }
   .how-steps {
     display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 40px; margin-top: 64px;
+    gap: 0; margin-top: 64px;
+    border: 1px solid var(--border-dark);
   }
-  .how-step { position: relative; }
-  .how-step:not(:last-child)::after {
-    content: '→';
-    position: absolute; right: -24px; top: 18px;
-    font-size: 20px; color: var(--gold);
+  .how-step {
+    padding: 44px 32px;
+    border-right: 1px solid var(--border-dark);
+    position: relative;
   }
+  .how-step:last-child { border-right: none; }
   .step-n {
-    font-family: 'Playfair Display', serif;
-    font-size: 56px; font-weight: 900;
-    color: var(--gold); line-height: 1;
-    opacity: 0.35; margin-bottom: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; font-weight: 700;
+    color: var(--red); line-height: 1;
+    opacity: 0.25; margin-bottom: 4px;
   }
   .step-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 20px; font-weight: 700;
-    color: var(--dark); margin-bottom: 10px;
+    color: var(--white); margin-bottom: 10px;
   }
-  .step-desc { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+  .step-desc { font-size: 13px; font-weight: 300; color: var(--grey); line-height: 1.75; }
+
+  /* ── CLIENTS ── */
+  .clients { background: var(--black2); }
+  .clients-intro {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 64px;
+  }
+  .clients-note { font-size: 13px; color: var(--grey); max-width: 280px; line-height: 1.7; }
+  .clients-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--border-dark);
+    border: 1px solid var(--border-dark);
+  }
+  .client-card {
+    background: var(--black2); padding: 36px 28px;
+    transition: background 0.3s; position: relative; overflow: hidden;
+    cursor: default;
+  }
+  .client-card:hover { background: #1a0d0d; }
+  .client-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; width: 3px; height: 100%;
+    background: var(--red);
+    transform: scaleY(0); transform-origin: top;
+    transition: transform 0.4s;
+  }
+  .client-card:hover::before { transform: scaleY(1); }
+  .client-industry {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 12px;
+  }
+  .client-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 700; color: var(--white);
+    margin-bottom: 8px; line-height: 1.2;
+  }
+  .client-desc { font-size: 12px; color: var(--grey); line-height: 1.6; }
+  .clients-cta {
+    margin-top: 48px; text-align: center;
+    padding: 32px; border: 1px solid var(--border-dark);
+    background: var(--black);
+  }
+  .clients-cta p { font-size: 14px; color: var(--grey); margin-bottom: 16px; }
+  .clients-cta p strong { color: var(--white); }
 
   /* ── RESULTS ── */
+  .results { background: var(--black); }
   .results-inner {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 80px; align-items: center; margin-top: 64px;
+    gap: 80px; align-items: start; margin-top: 64px;
   }
   .result-cards { display: flex; flex-direction: column; gap: 20px; }
   .rcard {
-    background: var(--white); border: 1px solid var(--border);
-    border-left: 4px solid var(--gold);
-    padding: 28px; transition: box-shadow 0.3s;
+    background: var(--black2); border: 1px solid var(--border-dark);
+    border-left: 3px solid var(--red);
+    padding: 28px; transition: border-color 0.3s;
   }
-  .rcard:hover { box-shadow: 0 8px 24px rgba(26,21,8,0.08); }
-  .rcard-stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 10px; }
-  .rcard-text { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.7; font-style: italic; margin-bottom: 14px; }
-  .rcard-author { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark); }
-  .results-numbers { display: flex; flex-direction: column; gap: 44px; }
-  .rnum-row { display: flex; align-items: baseline; gap: 16px; padding-bottom: 44px; border-bottom: 1px solid var(--border); }
-  .rnum-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .rcard:hover { border-color: var(--red-bright); }
+  .rcard-stars { color: var(--red); font-size: 14px; letter-spacing: 2px; margin-bottom: 10px; }
+  .rcard-text { font-size: 15px; font-weight: 300; color: var(--grey-light); line-height: 1.75; font-style: italic; margin-bottom: 14px; }
+  .rcard-author { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); }
+  .results-numbers { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border-dark); }
+  .rnum-row {
+    display: flex; align-items: center; gap: 24px;
+    padding: 32px 36px; border-bottom: 1px solid var(--border-dark);
+    transition: background 0.2s;
+  }
+  .rnum-row:last-child { border-bottom: none; }
+  .rnum-row:hover { background: var(--black2); }
   .rnum-big {
-    font-family: 'Playfair Display', serif;
-    font-size: 72px; line-height: 1; font-weight: 900;
-    color: var(--gold-dim);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; line-height: 1; font-weight: 700;
+    color: var(--red); min-width: 120px;
   }
   .rnum-info h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 4px;
   }
-  .rnum-info p { font-size: 13px; color: var(--muted); }
+  .rnum-info p { font-size: 13px; color: var(--grey); }
 
   /* ── ABOUT ── */
-  .about { background: var(--bg2); }
+  .about { background: var(--black2); }
   .about-inner {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 80px; align-items: center; margin-top: 64px;
   }
-  .about-content p { font-size: 16px; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
-  .about-features { display: flex; flex-direction: column; gap: 16px; margin-top: 36px; }
-  .feat-row { display: flex; align-items: flex-start; gap: 14px; }
-  .feat-icon { color: var(--gold); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
-  .feat-text h5 { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 2px; }
-  .feat-text p { font-size: 13px; color: var(--muted); }
+  .about-content p { font-size: 15px; font-weight: 300; color: var(--grey); line-height: 1.85; margin-bottom: 20px; }
+  .about-features { display: flex; flex-direction: column; gap: 0; margin-top: 36px; border: 1px solid var(--border-dark); }
+  .feat-row {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 20px 24px; border-bottom: 1px solid var(--border-dark);
+  }
+  .feat-row:last-child { border-bottom: none; }
+  .feat-icon { color: var(--red); font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .feat-text h5 { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+  .feat-text p { font-size: 12px; color: var(--grey); }
   .about-visual {
-    background: var(--dark); padding: 48px;
+    background: var(--black); padding: 56px;
     position: relative; overflow: hidden;
+    border: 1px solid var(--border-dark);
+  }
+  .about-visual::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--red-bright), transparent);
+  }
+  .av-swan {
+    display: block; margin: 0 auto 36px;
+    opacity: 0.9;
   }
   .av-quote {
-    font-family: 'Playfair Display', serif;
-    font-size: 52px; line-height: 1.05; font-weight: 900;
-    color: var(--white); margin-bottom: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; line-height: 1.1; font-weight: 700;
+    color: var(--white); margin-bottom: 24px; text-align: center;
   }
-  .av-quote em { font-style: italic; color: var(--gold); }
-  .av-sub { font-size: 14px; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; }
-  .av-bg {
-    position: absolute; bottom: -40px; right: -40px;
-    width: 200px; height: 200px; border-radius: 50%;
-    background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
-  }
+  .av-quote em { font-style: italic; color: var(--red); }
+  .av-sub { font-size: 10px; color: var(--grey); letter-spacing: 0.2em; text-transform: uppercase; text-align: center; }
 
   /* ── CTA ── */
   .cta-section {
-    background: var(--dark);
+    background: var(--red);
     padding: 100px 56px; text-align: center;
     position: relative; overflow: hidden;
   }
   .cta-section::before {
-    content: 'PP';
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    font-family: 'Playfair Display', serif;
-    font-size: 30vw; font-weight: 900; line-height: 1;
-    color: rgba(255,255,255,0.02); pointer-events: none;
-    white-space: nowrap;
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, #96281b 0%, var(--red) 50%, #e63946 100%);
+    opacity: 0.6;
   }
+  .cta-inner { position: relative; z-index: 1; }
   .cta-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 5vw, 64px); font-weight: 900;
-    color: var(--white); margin-bottom: 20px; position: relative;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 5vw, 68px); font-weight: 700;
+    color: var(--white); margin-bottom: 20px; line-height: 1.0;
   }
-  .cta-section h2 em { font-style: italic; color: var(--gold); }
-  .cta-section p { font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.5); margin-bottom: 44px; position: relative; }
-  .btn-gold {
-    background: var(--gold); color: var(--dark);
-    padding: 18px 48px; font-size: 14px; font-weight: 700;
-    letter-spacing: 0.08em; text-transform: uppercase;
+  .cta-section h2 em { font-style: italic; opacity: 0.85; }
+  .cta-section p { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.75); margin-bottom: 44px; }
+  .btn-white {
+    background: var(--white); color: var(--red);
+    padding: 18px 52px; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
     border: none; cursor: pointer; text-decoration: none;
-    display: inline-block; position: relative;
-    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    display: inline-block;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .btn-gold:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(232,184,75,0.25); }
+  .btn-white:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.25); }
   .cta-contact {
-    display: flex; justify-content: center; gap: 40px;
-    margin-top: 40px; position: relative;
+    display: flex; justify-content: center; gap: 56px;
+    margin-top: 48px;
   }
   .cta-item { text-align: center; }
-  .cta-item-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 6px; }
-  .cta-item-val { font-family: 'Space Mono', monospace; font-size: 15px; color: var(--gold); letter-spacing: 0.05em; }
+  .cta-item-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; font-family: 'DM Mono', monospace; }
+  .cta-item-val { font-family: 'DM Mono', monospace; font-size: 14px; color: var(--white); letter-spacing: 0.05em; }
 
   /* ── FOOTER ── */
   footer {
-    background: #110e03; padding: 56px 56px 32px;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    background: var(--black); padding: 56px 56px 32px;
+    border-top: 1px solid var(--border-dark);
   }
   .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; }
   .footer-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px; font-weight: 700; color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 700; color: var(--white);
+    display: flex; align-items: center; gap: 12px;
   }
-  .footer-brand span { color: var(--gold); }
-  .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .footer-brand span { color: var(--red); }
+  .footer-tagline { font-size: 10px; color: var(--grey); margin-top: 6px; letter-spacing: 0.1em; text-transform: uppercase; }
   .footer-cols { display: flex; gap: 56px; }
-  .fcol h5 { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
-  .fcol a { display: block; font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
-  .fcol a:hover { color: var(--gold); }
+  .fcol h5 { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey); margin-bottom: 16px; font-family: 'DM Mono', monospace; }
+  .fcol a { display: block; font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+  .fcol a:hover { color: var(--red); }
   .footer-bottom {
     display: flex; justify-content: space-between; align-items: center;
-    padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 24px; border-top: 1px solid var(--border-dark);
   }
-  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
-  .footer-stars { font-size: 12px; color: rgba(255,255,255,0.25); }
-  .footer-stars span { color: var(--gold); }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+  .footer-right { font-size: 11px; color: var(--red); font-family: 'DM Mono', monospace; }
 
   /* ── ANIM ── */
   @keyframes fadeUp {
@@ -432,7 +469,9 @@
     section { padding: 80px 24px; }
     .services-grid { grid-template-columns: 1fr; }
     .how-steps { grid-template-columns: 1fr 1fr; }
-    .how-step::after { display: none; }
+    .how-step { border-right: none; border-bottom: 1px solid var(--border-dark); }
+    .clients-grid { grid-template-columns: 1fr 1fr; }
+    .clients-intro { flex-direction: column; gap: 16px; }
     .results-inner, .about-inner { grid-template-columns: 1fr; gap: 40px; }
     .footer-top { flex-direction: column; gap: 32px; }
     .footer-cols { flex-wrap: wrap; gap: 28px; }
@@ -447,18 +486,30 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="32" height="32" rx="6" fill="#1a1508"/>
-      <circle cx="16" cy="16" r="10" stroke="#e8b84b" stroke-width="1.5" stroke-dasharray="3 2"/>
-      <circle cx="16" cy="16" r="4" fill="#e8b84b"/>
-      <path d="M16 6V4M16 28V26M6 16H4M28 16H26" stroke="#e8b84b" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+    <!-- Black Swan SVG logo -->
+    <svg class="nav-logo-swan" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="34" height="34" rx="7" fill="#141414"/>
+      <!-- Swan body -->
+      <ellipse cx="18" cy="22" rx="9" ry="6" fill="#0a0a0a" stroke="#c0392b" stroke-width="0.5"/>
+      <ellipse cx="18" cy="22" rx="8" ry="5.5" fill="#1e1e1e"/>
+      <!-- Swan neck -->
+      <path d="M12 21 C11 17, 10 13, 14 10 C15 9, 16 9, 17 9.5" stroke="#1e1e1e" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <!-- Swan head -->
+      <ellipse cx="17.5" cy="9" rx="2.5" ry="2" fill="#1e1e1e"/>
+      <!-- Red beak -->
+      <path d="M19.5 8.5 L22.5 9 L19.5 9.5Z" fill="#c0392b"/>
+      <!-- Wing highlight -->
+      <path d="M12 20 C14 17, 18 18, 24 20" stroke="#c0392b" stroke-width="0.7" stroke-linecap="round" fill="none" opacity="0.6"/>
+      <!-- Eye -->
+      <circle cx="18" cy="8.8" r="0.7" fill="#c0392b"/>
     </svg>
-    Perth Promotions
+    Perth <span style="color:var(--red);margin-left:4px">Promotions</span>
   </a>
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#how">How It Works</a>
-    <a href="#results">Results</a>
+    <a href="#clients">Clients</a>
+    <a href="#results">Reviews</a>
     <a href="#about">About</a>
   </div>
   <a href="tel:0466094672" class="nav-cta">Get Started</a>
@@ -466,35 +517,54 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg-shape"></div>
-  <div class="hero-dots"></div>
+  <div class="hero-bg-swan">
+    <!-- Large background swan silhouette -->
+    <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="300" cy="360" rx="180" ry="100" fill="white"/>
+      <path d="M180 340 C160 260, 140 180, 200 120 C220 100, 250 95, 270 105" stroke="white" stroke-width="60" stroke-linecap="round" fill="none"/>
+      <ellipse cx="268" cy="100" rx="40" ry="30" fill="white"/>
+      <path d="M295 88 L360 105 L295 118Z" fill="white"/>
+      <path d="M180 330 C220 280, 300 295, 400 340" stroke="white" stroke-width="12" stroke-linecap="round" fill="none"/>
+    </svg>
+  </div>
+  <div class="hero-grain"></div>
   <div class="hero-left">
     <div class="hero-eyebrow"><span class="eyebrow-line"></span>Perth Local Advertising</div>
-    <h1>Put Your Business<br>In Front of <em>Perth.</em></h1>
+    <h1>Put Your Business<br>In Front of<br><em>All of Perth.</em></h1>
     <p class="hero-sub">Perth Promotions gets your brand seen across local Perth social media groups — fast, easy, and effective. More eyes on your business, more customers through the door.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-dark">Start Promoting</a>
+      <a href="#contact" class="btn-red">Start Promoting</a>
       <a href="#how" class="btn-ghost">How it works →</a>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-card-stack">
-      <div class="hero-card-bg"></div>
-      <div class="hero-card">
-        <div class="card-platform"><span class="platform-dot"></span>Perth Local Groups — Post Live</div>
-        <div class="card-post-preview">
-          <strong>📍 Perth Promotions</strong> — helping <strong>local Perth businesses</strong> reach thousands of potential customers through the community groups they already follow every day.
-        </div>
-        <div class="card-stats">
-          <div class="cstat"><div class="cstat-num">5.0★</div><div class="cstat-label">Rating</div></div>
-          <div class="cstat"><div class="cstat-num">Local</div><div class="cstat-label">Targeted</div></div>
-          <div class="cstat"><div class="cstat-num">Fast</div><div class="cstat-label">Setup</div></div>
-        </div>
+    <div class="swan-showcase">
+      <!-- Swan in showcase -->
+      <svg class="showcase-swan" width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Water reflection -->
+        <ellipse cx="60" cy="95" rx="40" ry="8" fill="#c0392b" opacity="0.1"/>
+        <!-- Body -->
+        <ellipse cx="68" cy="80" rx="36" ry="22" fill="#1e1e1e" stroke="#c0392b" stroke-width="1"/>
+        <!-- Wing detail -->
+        <path d="M38 78 C48 65, 68 68, 95 78" stroke="#c0392b" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+        <path d="M42 84 C52 74, 70 76, 92 82" stroke="rgba(192,57,43,0.4)" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <!-- Neck -->
+        <path d="M42 74 C38 55, 36 38, 48 24 C52 19, 58 18, 62 21" stroke="#1e1e1e" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <path d="M42 74 C38 55, 36 38, 48 24 C52 19, 58 18, 62 21" stroke="#2a2a2a" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <!-- Head -->
+        <ellipse cx="62" cy="19" rx="9" ry="7" fill="#1e1e1e"/>
+        <!-- Red beak -->
+        <path d="M70 17 L84 20 L70 23Z" fill="#c0392b"/>
+        <circle cx="64" cy="17" r="2.5" fill="#c0392b"/>
+        <circle cx="64.8" cy="16.2" r="0.8" fill="#111"/>
+      </svg>
+      <div class="showcase-label">Western Australia's Black Swan</div>
+      <div class="showcase-stats">
+        <div class="sstat"><div class="sstat-num">5.0★</div><div class="sstat-label">Google</div></div>
+        <div class="sstat"><div class="sstat-num">Local</div><div class="sstat-label">Targeted</div></div>
+        <div class="sstat"><div class="sstat-num">Fast</div><div class="sstat-label">Setup</div></div>
       </div>
-      <div class="hero-badge">
-        <div class="badge-stars">★★★★★</div>
-        <div class="badge-text">5.0 on Google<br>2 Reviews</div>
-      </div>
+      <div class="showcase-badge">Perth WA</div>
     </div>
   </div>
 </section>
@@ -502,26 +572,25 @@
 <!-- STRIP -->
 <div class="strip">
   <div class="strip-track">
-    <span class="strip-item gold">Perth Promotions</span>
+    <span class="strip-item bold">Perth Promotions</span>
     <span class="strip-item">◆</span>
     <span class="strip-item">Local Social Media</span>
     <span class="strip-item">◆</span>
     <span class="strip-item">Perth Business Visibility</span>
     <span class="strip-item">◆</span>
-    <span class="strip-item gold">Community Reach</span>
+    <span class="strip-item bold">Community Reach</span>
     <span class="strip-item">◆</span>
     <span class="strip-item">Small Business Specialists</span>
     <span class="strip-item">◆</span>
     <span class="strip-item">Wellington St Perth</span>
     <span class="strip-item">◆</span>
-    <!-- repeat -->
-    <span class="strip-item gold">Perth Promotions</span>
+    <span class="strip-item bold">Perth Promotions</span>
     <span class="strip-item">◆</span>
     <span class="strip-item">Local Social Media</span>
     <span class="strip-item">◆</span>
     <span class="strip-item">Perth Business Visibility</span>
     <span class="strip-item">◆</span>
-    <span class="strip-item gold">Community Reach</span>
+    <span class="strip-item bold">Community Reach</span>
     <span class="strip-item">◆</span>
     <span class="strip-item">Small Business Specialists</span>
     <span class="strip-item">◆</span>
@@ -533,7 +602,7 @@
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="label">What We Offer</div>
-  <h2 class="section-title">Local Reach.<br>Real Results.</h2>
+  <h2 class="section-title">Local Reach.<br><em>Real</em> Results.</h2>
   <p class="section-sub">We connect Perth businesses with their local community through targeted social media promotion — simple, effective, and built for small business.</p>
   <div class="services-grid">
     <div class="service-card">
@@ -572,7 +641,7 @@
 <!-- HOW -->
 <section class="how" id="how">
   <div class="label">The Process</div>
-  <h2 class="section-title">Easy to Work With.<br>Fast to Launch.</h2>
+  <h2 class="section-title">Easy to Work With.<br><em>Fast</em> to Launch.</h2>
   <p class="section-sub">Getting your business promoted across Perth social media has never been simpler.</p>
   <div class="how-steps">
     <div class="how-step">
@@ -598,10 +667,69 @@
   </div>
 </section>
 
+<!-- CLIENTS -->
+<section class="clients" id="clients">
+  <div class="label">Our Clients</div>
+  <div class="clients-intro">
+    <div>
+      <h2 class="section-title">Perth Businesses<br>We're <em>Proud</em> to Promote.</h2>
+      <p class="section-sub">Local businesses across every industry — all growing through Perth's community networks.</p>
+    </div>
+    <div class="clients-note">Want your business featured here? Call us today and join the roster of Perth businesses getting seen.</div>
+  </div>
+  <div class="clients-grid">
+    <div class="client-card">
+      <div class="client-industry">Business Services</div>
+      <div class="client-name">Kively Office Assistants Online</div>
+      <p class="client-desc">Virtual office assistance for Perth businesses — growing local visibility through community promotion.</p>
+    </div>
+    <!-- Placeholder clients — replace with real client names -->
+    <div class="client-card">
+      <div class="client-industry">Your Industry Here</div>
+      <div class="client-name">Your Business Name</div>
+      <p class="client-desc">Your business could be featured here. Call us to get your brand promoted across Perth's social networks.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-industry">Your Industry Here</div>
+      <div class="client-name">Your Business Name</div>
+      <p class="client-desc">Your business could be featured here. Call us to get your brand promoted across Perth's social networks.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-industry">Your Industry Here</div>
+      <div class="client-name">Your Business Name</div>
+      <p class="client-desc">Your business could be featured here. Call us to get your brand promoted across Perth's social networks.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-industry">Your Industry Here</div>
+      <div class="client-name">Your Business Name</div>
+      <p class="client-desc">Your business could be featured here. Call us to get your brand promoted across Perth's social networks.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-industry">Your Industry Here</div>
+      <div class="client-name">Your Business Name</div>
+      <p class="client-desc">Your business could be featured here. Call us to get your brand promoted across Perth's social networks.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-industry">Your Industry Here</div>
+      <div class="client-name">Your Business Name</div>
+      <p class="client-desc">Your business could be featured here. Call us to get your brand promoted across Perth's social networks.</p>
+    </div>
+    <div class="client-card">
+      <div class="client-industry">Your Industry Here</div>
+      <div class="client-name">Your Business Name</div>
+      <p class="client-desc">Your business could be featured here. Call us to get your brand promoted across Perth's social networks.</p>
+    </div>
+  </div>
+  <div class="clients-cta">
+    <p><strong>Want your business on this page?</strong> We're always looking to partner with quality Perth businesses.</p>
+    <a href="tel:0466094672" class="btn-red">Call 0466 094 672</a>
+  </div>
+</section>
+
 <!-- RESULTS -->
-<section id="results">
+<section class="results" id="results">
   <div class="label">What Clients Say</div>
-  <h2 class="section-title">Trusted by Perth<br>Businesses.</h2>
+  <h2 class="section-title">Trusted by Perth<br><em>Businesses.</em></h2>
   <div class="results-inner">
     <div class="result-cards">
       <div class="rcard">
@@ -646,50 +774,64 @@
   <div class="label">About Us</div>
   <div class="about-inner">
     <div class="about-content">
-      <h2 class="section-title">Perth's Local<br>Promotion Specialists</h2>
+      <h2 class="section-title">Perth's Local<br><em>Promotion</em> Specialists</h2>
       <p>Perth Promotions is based in the heart of Perth at Wellington Street, dedicated to helping local small businesses grow through community-driven social media promotion.</p>
       <p>We know that Perth is a community. People buy local. They trust recommendations from their neighbours and their local groups. That's exactly where we put your business.</p>
       <p>Whether you're a solo trader, a startup, or an established small business looking for more exposure — we're an easy, effective, and affordable way to get seen.</p>
       <div class="about-features">
         <div class="feat-row">
-          <div class="feat-icon">✦</div>
-          <div class="feat-text"><h5>Perth CBD Based</h5><p>123 Wellington St, The Rise — Wellington Place</p></div>
+          <div class="feat-icon">◆</div>
+          <div class="feat-text"><h5>Perth CBD Based</h5><p>Wellington St, Perth — right in the heart of the city</p></div>
         </div>
         <div class="feat-row">
-          <div class="feat-icon">✦</div>
+          <div class="feat-icon">◆</div>
           <div class="feat-text"><h5>Small Business Focused</h5><p>Built for local Perth businesses, not big corporates</p></div>
         </div>
         <div class="feat-row">
-          <div class="feat-icon">✦</div>
+          <div class="feat-icon">◆</div>
           <div class="feat-text"><h5>Community Approach</h5><p>Authentic, local promotion that feels genuine — not spammy</p></div>
         </div>
       </div>
     </div>
     <div class="about-visual">
-      <div class="av-bg"></div>
-      <div class="av-quote">Local<br>Business<br><em>Deserves</em><br>Local<br>Attention.</div>
-      <div class="av-sub">Perth Promotions — Est. Wellington St</div>
+      <!-- Black Swan in about panel -->
+      <svg class="av-swan" width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="70" cy="110" rx="48" ry="12" fill="#c0392b" opacity="0.15"/>
+        <ellipse cx="82" cy="96" rx="42" ry="26" fill="#1a1a1a" stroke="#c0392b" stroke-width="1.5"/>
+        <path d="M48 90 C44 66, 40 44, 56 28 C62 22, 70 20, 76 24" stroke="#1a1a1a" stroke-width="18" stroke-linecap="round" fill="none"/>
+        <path d="M48 90 C44 66, 40 44, 56 28 C62 22, 70 20, 76 24" stroke="#252525" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <ellipse cx="76" cy="22" rx="11" ry="8" fill="#1a1a1a"/>
+        <path d="M86 19 L104 23 L86 27Z" fill="#c0392b"/>
+        <circle cx="79" cy="19" r="3" fill="#c0392b"/>
+        <circle cx="80" cy="18" r="1" fill="#0a0a0a"/>
+        <path d="M48 88 C60 72, 82 76, 108 88" stroke="#c0392b" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+        <path d="M52 98 C64 86, 84 89, 106 96" stroke="rgba(192,57,43,0.4)" stroke-width="1" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="av-quote">Local Business<br><em>Deserves</em><br>Local Attention.</div>
+      <div class="av-sub">Perth Promotions — Wellington St, Perth WA</div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section" id="contact">
-  <h2>Ready to Get<br><em>Noticed</em> in Perth?</h2>
-  <p>Call us today and let's get your business in front of the Perth community.</p>
-  <a href="tel:0466094672" class="btn-gold">Call 0466 094 672</a>
-  <div class="cta-contact">
-    <div class="cta-item">
-      <div class="cta-item-label">Phone</div>
-      <div class="cta-item-val">0466 094 672</div>
-    </div>
-    <div class="cta-item">
-      <div class="cta-item-label">Location</div>
-      <div class="cta-item-val">123 Wellington St, Perth WA 6004</div>
-    </div>
-    <div class="cta-item">
-      <div class="cta-item-label">Rating</div>
-      <div class="cta-item-val">★★★★★ 5.0 Google</div>
+  <div class="cta-inner">
+    <h2>Ready to Get<br><em>Noticed</em> in Perth?</h2>
+    <p>Call us today and let's get your business in front of the Perth community.</p>
+    <a href="tel:0466094672" class="btn-white">Call 0466 094 672</a>
+    <div class="cta-contact">
+      <div class="cta-item">
+        <div class="cta-item-label">Phone</div>
+        <div class="cta-item-val">0466 094 672</div>
+      </div>
+      <div class="cta-item">
+        <div class="cta-item-label">Location</div>
+        <div class="cta-item-val">Wellington St, Perth WA 6004</div>
+      </div>
+      <div class="cta-item">
+        <div class="cta-item-label">Google Rating</div>
+        <div class="cta-item-val">★★★★★ 5.0</div>
+      </div>
     </div>
   </div>
 </section>
@@ -698,7 +840,18 @@
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-brand">Perth <span>Promotions</span></div>
+      <div class="footer-brand">
+        <svg width="28" height="28" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="34" height="34" rx="7" fill="#141414"/>
+          <ellipse cx="20" cy="24" rx="10" ry="6.5" fill="#1e1e1e" stroke="#c0392b" stroke-width="0.8"/>
+          <path d="M13 22 C11 16, 10 11, 15 7 C17 5.5, 19 5, 21 6" stroke="#1e1e1e" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <ellipse cx="21" cy="5.5" rx="3" ry="2.5" fill="#1e1e1e"/>
+          <path d="M23.5 4.5 L28.5 6 L23.5 7.5Z" fill="#c0392b"/>
+          <circle cx="22.5" cy="4.8" r="1" fill="#c0392b"/>
+          <path d="M13 21 C16 17, 21 18, 27 21" stroke="#c0392b" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.7"/>
+        </svg>
+        Perth <span>Promotions</span>
+      </div>
       <div class="footer-tagline">Local Social Media Advertising — Perth WA</div>
     </div>
     <div class="footer-cols">
@@ -714,18 +867,19 @@
         <a href="#about">About Us</a>
         <a href="#results">Reviews</a>
         <a href="#how">How It Works</a>
+        <a href="#clients">Our Clients</a>
       </div>
       <div class="fcol">
         <h5>Contact</h5>
         <a href="tel:0466094672">0466 094 672</a>
-        <a href="#">123 Wellington St</a>
+        <a href="#">Wellington St, Perth</a>
         <a href="#">Perth WA 6004</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
     <div class="footer-copy">© 2025 Perth Promotions. All rights reserved.</div>
-    <div class="footer-stars"><span>★ 5.0</span> on Google Maps</div>
+    <div class="footer-right">★ 5.0 Google Maps</div>
   </div>
 </footer>
 
